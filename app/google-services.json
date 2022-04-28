@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "252999926048",
+    "project_id": "aplikasitim-e0644",
+    "storage_bucket": "aplikasitim-e0644.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:252999926048:android:6849c16a839e8e9814d745",
+        "android_client_info": {
+          "package_name": "com.adl.absensiadl"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "252999926048-q3goiahgvlfotfk15oda9gschq2mv63b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDA4MmjpALranhxlP_D7BagFP7ZgMDEQfM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "252999926048-q3goiahgvlfotfk15oda9gschq2mv63b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
