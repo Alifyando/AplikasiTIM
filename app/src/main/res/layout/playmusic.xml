@@ -22,6 +22,7 @@
             android:layout_gravity="left"
             android:backgroundTint="#8080B9"
             android:foregroundGravity="left"
+            android:tint="#FFFFFF"
             app:srcCompat="?attr/actionModeCloseDrawable"
             tools:ignore="SpeakableTextPresentCheck" />
 
@@ -34,14 +35,14 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/imageButton3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
+                android:id="@+id/imageButton14"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="275dp"
-                android:foregroundGravity="right"
-                app:srcCompat="@android:drawable/ic_menu_sort_by_size"
-                tools:ignore="SpeakableTextPresentCheck" />
+                android:layout_weight="1"
+                android:backgroundTint="#8080B9"
+                android:tint="#FFFFFF"
+                app:srcCompat="@drawable/ic_baseline_more_horiz_24" />
         </LinearLayout>
 
     </LinearLayout>
@@ -49,6 +50,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -115,7 +117,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="40dp" />
+                android:layout_marginTop="40dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:text="00:00" />
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="240dp"
+                    android:text="TextView"
+                    tools:text="03:41" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -155,12 +179,13 @@
                     app:srcCompat="@android:drawable/ic_media_next" />
 
                 <ImageButton
-                    android:id="@+id/imageButton12"
+                    android:id="@+id/imageButton15"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#8080B9"
-                    app:srcCompat="@android:drawable/btn_star" />
+                    android:tint="#FFFFFF"
+                    app:srcCompat="@drawable/ic_baseline_star_24" />
 
             </LinearLayout>
 
