@@ -63,6 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="#8080B9"
+                android:cropToPadding="false"
                 app:srcCompat="@android:drawable/ic_media_play"
                 tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
         </LinearLayout>

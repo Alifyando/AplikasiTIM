@@ -2,6 +2,7 @@ package com.adl.aplikasitim
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_register.*
 
@@ -25,7 +26,9 @@ class RegisterActivity : AppCompatActivity() {
             .addOnCompleteListener { it ->
                 if (it.isSuccessful) {
                     finish()
+                    Toast.makeText(this,"Username berhasil ditambahkan",Toast.LENGTH_LONG).show()
                 }
-            }
+            }.addOnFailureListener{ exception ->
+                Toast.makeText(applicationContext,exception.localizedMessage,Toast.LENGTH_LONG).show()}
     }
 }
