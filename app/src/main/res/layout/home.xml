@@ -84,7 +84,7 @@
                             android:layout_marginLeft="10dp"
                             android:fontFamily="@font/acme"
                             android:shadowColor="#FFFFFF"
-                            android:text="Seach music"
+                            android:text="Search music"
                             android:textColor="#FFFFFF"
                             android:textSize="20sp"
                             android:textStyle="italic" />
