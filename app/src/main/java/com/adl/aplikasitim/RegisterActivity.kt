@@ -16,6 +16,7 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
 
         auth = FirebaseAuth.getInstance()
+
         btnRegistrasi.setOnClickListener({
             register()
         })
