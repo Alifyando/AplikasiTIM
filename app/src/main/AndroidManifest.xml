@@ -12,11 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".PlayMusicActivity"
+            android:exported="false" />
+        <activity
             android:name=".Home"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".LoginActivity"
             android:exported="true">

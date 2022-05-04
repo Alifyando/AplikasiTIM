@@ -8,7 +8,7 @@
     app:cardCornerRadius="15dp"
     app:cardElevation="5dp"
     app:contentPadding="10dp"
-    tools:context=".MainActivity">
+    tools:context=".PlayMusicActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,9 +22,9 @@
             android:layout_gravity="left"
             android:backgroundTint="#8080B9"
             android:foregroundGravity="left"
-            android:tint="#FFFFFF"
             app:srcCompat="?attr/actionModeCloseDrawable"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck"
+            app:tint="#FFFFFF" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -41,8 +41,8 @@
                 android:layout_marginLeft="275dp"
                 android:layout_weight="1"
                 android:backgroundTint="#8080B9"
-                android:tint="#FFFFFF"
-                app:srcCompat="@drawable/ic_baseline_more_horiz_24" />
+                app:srcCompat="@drawable/ic_baseline_more_horiz_24"
+                app:tint="#FFFFFF" />
         </LinearLayout>
 
     </LinearLayout>
@@ -65,7 +65,7 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/txtJudul"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -73,7 +73,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/txtMusisi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -95,7 +95,7 @@
                     android:orientation="horizontal">
 
                     <ImageButton
-                        android:id="@+id/imageButton7"
+                        android:id="@+id/btnVolume"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:backgroundTint="#8080B9"
@@ -103,7 +103,7 @@
                         tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
                     <ProgressBar
-                        android:id="@+id/progressBar3"
+                        android:id="@+id/Volume"
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -147,7 +147,7 @@
                 android:orientation="horizontal">
 
                 <ImageButton
-                    android:id="@+id/imageButton11"
+                    android:id="@+id/btnShuffle"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -155,7 +155,7 @@
                     app:srcCompat="@android:drawable/stat_notify_sync" />
 
                 <ImageButton
-                    android:id="@+id/imageButton8"
+                    android:id="@+id/btnPrevMusic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -163,7 +163,7 @@
                     app:srcCompat="@android:drawable/ic_media_previous" />
 
                 <ImageButton
-                    android:id="@+id/imageButton9"
+                    android:id="@+id/btnPlay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -171,7 +171,7 @@
                     app:srcCompat="@android:drawable/ic_media_play" />
 
                 <ImageButton
-                    android:id="@+id/imageButton10"
+                    android:id="@+id/btnNext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -179,13 +179,13 @@
                     app:srcCompat="@android:drawable/ic_media_next" />
 
                 <ImageButton
-                    android:id="@+id/imageButton15"
+                    android:id="@+id/btnFav"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:backgroundTint="#8080B9"
-                    android:tint="#FFFFFF"
-                    app:srcCompat="@drawable/ic_baseline_star_24" />
+                    app:srcCompat="@drawable/ic_baseline_star_24"
+                    app:tint="#FFFFFF" />
 
             </LinearLayout>
 
