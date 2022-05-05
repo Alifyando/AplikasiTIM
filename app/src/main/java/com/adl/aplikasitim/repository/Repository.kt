@@ -3,19 +3,19 @@ package com.adl.aplikasitim.repository
 import android.content.Context
 import android.util.Log
 import com.adl.aplikasitim.models.Album
-import com.adl.aplikasitim.models.MusicResponse
+import com.adl.aplikasitim.models.Music
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.IOException
 
 object Repository {
-    fun getDataTopChartsFromAssets(context: Context?): List<MusicResponse>? {
+    fun getDataTopChartsFromAssets(context: Context?): List<Music>? {
         val json: String?
         return try {
             val inputStream = context?.assets?.open("json/topcharts.json")
             json = inputStream?.bufferedReader().use { it?.readText() }
             Log.d("Repository", "getDataTopChartsFromAssets: $json")
-            val groupListType = object : TypeToken<List<MusicResponse?>>() {}.type
+            val groupListType = object : TypeToken<List<Music?>>() {}.type
             Gson().fromJson(json, groupListType)
         }catch (e: IOException){
             e.printStackTrace()

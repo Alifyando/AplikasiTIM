@@ -5,6 +5,11 @@ import android.os.Bundle
 import com.adl.aplikasitim.databinding.PlaymusicBinding
 
 class PlayMusicActivity : AppCompatActivity() {
+
+    companion object{
+        const val KEY_SONG = "key_song"
+        const val KEY_POSITION = "key_position"
+    }
     private lateinit var playmusicBinding: PlaymusicBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

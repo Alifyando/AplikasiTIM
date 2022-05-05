@@ -4,24 +4,25 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.adl.aplikasitim.databinding.PlaylistBinding
-import com.adl.aplikasitim.databinding.PlaymusicBinding
 import com.adl.aplikasitim.models.Music
 
 
 class TopMusicAdapter: RecyclerView.Adapter<TopMusicAdapter.ViewHolder>() {
 
-    private var music = mutableListOf<Music>()
+    private var musics = mutableListOf<Music>()
     private  var listener : ((MutableList<Music>, Int) -> Unit)? = null
 
-    class ViewHolder(private val binding: PlaylistBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: PlaylistBinding): RecyclerView.ViewHolder(binding.root) {
         fun bindItem(music: Music,listener: ((MutableList<Music>, Int) -> Unit)?){
+            binding.txtIndexMusic.text = (adapterPosition + 1).toString() //Menambahkan berdasarkan posisi
             binding.txtArtis.text = music.artistSong
-            binding.txtJudulmusic.text=music.nameSong
+            binding.txtJudul.text=music.nameSong
 
-           // itemView.setOnClickListener{
-
-           // }
-
+            itemView.setOnClickListener{
+                if(listener != null){
+                    listener(musics,adapterPosition)
+                }
+            }
 
         }
 
@@ -33,21 +34,20 @@ class TopMusicAdapter: RecyclerView.Adapter<TopMusicAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindItem(music[position],listener)
+        holder.bindItem(musics[position],listener)
     }
 
-    override fun getItemCount(): Int = music.size
+    override fun getItemCount(): Int = musics.size
 
-        fun onClick(listener : ((MutableList<Music>, Int) -> Unit)){
-            this.listener=listener
-        }
+    fun onClick(listener : ((MutableList<Music>, Int) -> Unit)){
+        this.listener=listener
+    }
 
 
-        fun setData(music:MutableList<Music>){
-            this.music = music
-            notifyDataSetChanged()
-        }
-
+    fun setData(music:MutableList<Music>){
+        this.musics = music
+        notifyDataSetChanged()
+    }
 
 
 }

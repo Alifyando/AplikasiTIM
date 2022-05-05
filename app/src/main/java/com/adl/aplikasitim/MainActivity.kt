@@ -8,7 +8,8 @@ import com.adl.aplikasitim.views.LibraryFragment
 import com.adl.aplikasitim.views.ProfileFragment
 
 class MainActivity : AppCompatActivity() {
-    lateinit var mainBinding: ActivityMainBinding
+
+    private lateinit var mainBinding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

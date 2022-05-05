@@ -21,13 +21,13 @@
             app:cardCornerRadius="10dp">
 
             <TextView
-                android:id="@+id/txtIndexMusic"
+                android:id="@+id/txtIndexAlbum"
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
                 android:text="TextView" />
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/imageView3"
                 android:layout_width="match_parent"
                 android:layout_height="61dp"
                 android:cropToPadding="false"
@@ -44,7 +44,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txtJudul"
+                android:id="@+id/txtJudulAlbum"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -52,7 +52,7 @@
                 android:textSize="18dp" />
 
             <TextView
-                android:id="@+id/txtArtis"
+                android:id="@+id/txtArtisAlbum"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"

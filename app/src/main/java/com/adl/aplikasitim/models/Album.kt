@@ -17,7 +17,7 @@ data class Album(
 	@field:SerializedName("songs")
 	@get:PropertyName("songs")
 	@set:PropertyName("songs")
-	var songs: List<MusicResponse>? = null,
+	var songs: List<Music>? = null,
 
 	@field:SerializedName("key_album")
 	@get:PropertyName("key_album")
