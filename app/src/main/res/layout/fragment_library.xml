@@ -137,13 +137,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:fillViewport="true">>
+                android:fillViewport="true">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvMusic"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:listitem="@layout/playlist" />
+                    tools:listitem="@layout/playlist"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
             </androidx.core.widget.NestedScrollView>
 
         </LinearLayout>

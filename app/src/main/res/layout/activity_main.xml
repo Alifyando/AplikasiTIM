@@ -8,6 +8,7 @@
     android:layout_margin="10dp"
     tools:context=".MainActivity">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -135,7 +136,8 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:listitem="@layout/playalbum" />
+                tools:listitem="@layout/fragment_my_track" />
+
 
         </LinearLayout>
 

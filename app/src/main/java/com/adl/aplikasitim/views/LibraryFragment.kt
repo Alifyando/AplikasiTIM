@@ -24,6 +24,7 @@ class LibraryFragment : Fragment() {
     private val libraryBinding get() = _binding
     private lateinit var topMusicAdapter : TopMusicAdapter
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -79,8 +80,6 @@ class LibraryFragment : Fragment() {
             context?.startActivity<PlayMusicActivity>(
                 PlayMusicActivity.KEY_SONG to musics,
                 PlayMusicActivity.KEY_POSITION to position
-
-
             )
         }
     }

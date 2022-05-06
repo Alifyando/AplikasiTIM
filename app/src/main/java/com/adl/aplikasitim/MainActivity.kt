@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
             when (id) {
                 R.id.action_library -> openFragment(LibraryFragment())
                 R.id.action_my_Accounts -> openFragment(ProfileFragment())
+
             }
         }
 
