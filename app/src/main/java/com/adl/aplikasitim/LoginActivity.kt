@@ -75,7 +75,8 @@ class LoginActivity : AppCompatActivity() {
     private fun loginToServer(email: String, pass: String) {
         auth.signInWithEmailAndPassword(email, pass)
             .addOnSuccessListener {
-                startActivity<MainActivity>()
+                val intent = Intent(this,MainActivity::class.java)
+                startActivity(intent)
                 finish()
             }
             .addOnFailureListener {
