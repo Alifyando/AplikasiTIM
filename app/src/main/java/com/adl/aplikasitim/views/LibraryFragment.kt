@@ -3,6 +3,7 @@ package com.adl.aplikasitim.views
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,12 @@ import com.adl.aplikasitim.adapter.TopMusicAdapter
 import com.adl.aplikasitim.databinding.FragmentLibraryBinding
 import com.adl.aplikasitim.models.Music
 import com.adl.aplikasitim.repository.Repository
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.fragment_library.*
 import org.jetbrains.anko.startActivity
 
@@ -23,7 +30,24 @@ class LibraryFragment : Fragment() {
     private var _binding :FragmentLibraryBinding? =null
     private val libraryBinding get() = _binding
     private lateinit var topMusicAdapter : TopMusicAdapter
+    private lateinit var databaseTopCharts: DatabaseReference
 
+    private val eventListenerTopCharts = object: ValueEventListener {
+        override fun onDataChange(snapshot: DataSnapshot) {
+            hideLoading()
+            Log.d("LibraryFragment", "[onDataChange] ${snapshot.value}")
+            val gson = Gson().toJson(snapshot.value)
+            val type = object : TypeToken<MutableList<Music>>(){}.type
+            val songs = Gson().fromJson<MutableList<Music>>(gson, type)
+
+            if (songs != null)
+                topMusicAdapter.setData(songs)
+        }
+        override fun onCancelled(error: DatabaseError) {
+            hideLoading()
+            Log.e("LibraryFragment", "[onCancelled] ${error.message}")
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -67,9 +91,11 @@ class LibraryFragment : Fragment() {
     private fun showTopMusics(){
         hideLoading()
         //GetData
-        val topMusics = Repository.getDataTopChartsFromAssets(context)
+        //val topMusics = Repository.getDataTopChartsFromAssets(context)
         //SetData
-        topMusicAdapter.setData(topMusics as MutableList<Music>)
+        //topMusicAdapter.setData(topMusics as MutableList<Music>)
+
+        databaseTopCharts.addValueEventListener(eventListenerTopCharts)
         //SetUpRecycleView
         libraryBinding?.rvMusic?.adapter = topMusicAdapter
     }
@@ -78,7 +104,7 @@ class LibraryFragment : Fragment() {
     private fun onClik() {
         topMusicAdapter.onClick { musics, position ->
             context?.startActivity<PlayMusicActivity>(
-                PlayMusicActivity.KEY_SONG to musics,
+                PlayMusicActivity.KEY_SONGS to musics,
                 PlayMusicActivity.KEY_POSITION to position
             )
         }

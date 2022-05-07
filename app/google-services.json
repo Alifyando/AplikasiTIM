@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "242866116389",
-    "project_id": "aplikasitim-4a4a0",
-    "storage_bucket": "aplikasitim-4a4a0.appspot.com"
+    "project_number": "541221206119",
+    "project_id": "aplikasitim-65663",
+    "storage_bucket": "aplikasitim-65663.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:242866116389:android:e44c0ecb06a5fc5f652ccc",
+        "mobilesdk_app_id": "1:541221206119:android:7c1ea3c818092be67c7cc2",
         "android_client_info": {
           "package_name": "com.adl.aplikasitim"
         }
       },
       "oauth_client": [
         {
-          "client_id": "242866116389-mpevvul8m4am0r50i2ffkn20grsj5b4g.apps.googleusercontent.com",
+          "client_id": "541221206119-vu90m0cdgjd33b95jpr59pnjkgmftdqj.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB3ae348H1hPpf7XSF-CyiB-qGGzCHLdfw"
+          "current_key": "AIzaSyDY-1Td6XO1eCeubU5x_o7TxSfOLyYfGWQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "242866116389-mpevvul8m4am0r50i2ffkn20grsj5b4g.apps.googleusercontent.com",
+              "client_id": "541221206119-vu90m0cdgjd33b95jpr59pnjkgmftdqj.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

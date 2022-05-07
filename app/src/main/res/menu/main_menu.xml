@@ -7,6 +7,12 @@
         android:title="@string/home"
         app:cnb_iconColor="@color/white"
         app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_my_tracks"
+        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:title="@string/my_tracks"
+        app:cnb_iconColor="@color/white"
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_my_Accounts"

@@ -15,7 +15,7 @@
             android:name=".PlayMusicActivity"
             android:exported="false" />
         <activity
-            android:name=".Home"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"

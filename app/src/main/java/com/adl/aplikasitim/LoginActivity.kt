@@ -13,7 +13,7 @@ import io.grpc.ManagedChannelProvider.NewChannelBuilderResult.error
 import io.grpc.ServerProvider.NewServerBuilderResult.error
 import kotlinx.android.synthetic.main.login_activity.*
 import org.jetbrains.anko.startActivity
-import retrofit2.Response.error
+
 
 class LoginActivity : AppCompatActivity() {
 
@@ -75,7 +75,8 @@ class LoginActivity : AppCompatActivity() {
     private fun loginToServer(email: String, pass: String) {
         auth.signInWithEmailAndPassword(email, pass)
             .addOnSuccessListener {
-                startActivity<MainActivity>()
+                val intent = Intent(this,MainActivity::class.java)
+                startActivity(intent)
                 finish()
             }
             .addOnFailureListener {
