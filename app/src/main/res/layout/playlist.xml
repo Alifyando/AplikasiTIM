@@ -62,17 +62,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <ImageButton
-                android:id="@+id/btnPlaysong"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="#8080B9"
-                android:cropToPadding="false"
-                app:srcCompat="@android:drawable/ic_media_play"
-                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
-        </LinearLayout>
+            android:orientation="vertical"/>
     </LinearLayout>
 
 

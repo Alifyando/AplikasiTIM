@@ -16,7 +16,7 @@ import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
-import com.google.firebase.database.R
+
 
 class PlayMusicActivity : AppCompatActivity() {
 
@@ -88,10 +88,10 @@ class PlayMusicActivity : AppCompatActivity() {
 
     private fun checkLikeButton() {
         if (isMyTrack){
-            playSongBinding.btnFav.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+            playSongBinding.btnFav.setImageResource(R.drawable.ic_baseline_favorite_24)
             playSongBinding.btnFav.setColorFilter(ContextCompat.getColor(this, android.R.color.white))
         }else{
-            playSongBinding.btnFav.setImageResource(R.drawable.ic_baseline_favourite_border_24)
+            playSongBinding.btnFav.setImageResource(R.drawable.ic_baseline_favorite_border_24)
             playSongBinding.btnFav.setColorFilter(ContextCompat.getColor(this, android.R.color.darker_gray))
         }
     }
@@ -148,8 +148,8 @@ class PlayMusicActivity : AppCompatActivity() {
 
     private fun initView(song: Music) {
         checkButtonSong()
-        playSongBinding.txtJudul.text = song.nameSong
-        playSongBinding.txtMusisi.text = song.artistSong
+        playSongBinding.tvNameSong.text = song.nameSong
+        playSongBinding.tvArtistName.text = song.artistSong
         Glide.with(this)
             .load(song.imageSong)
             .placeholder(android.R.color.darker_gray)
@@ -253,10 +253,10 @@ class PlayMusicActivity : AppCompatActivity() {
         playSongBinding.btnPlay.setOnClickListener {
             if (musicPlayer?.isPlaying!!){
                 musicPlayer?.pause()
-                playSongBinding.btnPlay.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic))
+                playSongBinding.btnPlay.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_baseline_play_circle_80))
             }else{
                 musicPlayer?.start()
-                playSongBinding.btnPlay.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_baseline_pause_circle_filled_24))
+                playSongBinding.btnPlay.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_baseline_pause_circle_filled_80))
             }
         }
 

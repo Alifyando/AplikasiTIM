@@ -5,14 +5,20 @@
         android:id="@+id/action_library"
         android:icon="@drawable/ic_baseline_library_music_24"
         android:title="@string/home"
-        app:cnb_iconColor="@color/white"
-        app:showAsAction="ifRoom"/>
+        app:cnb_iconColor="@color/purple_200"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_my_tracks"
-        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:icon="@drawable/ic_baseline_playlist_play_24"
         android:title="@string/my_tracks"
         app:cnb_iconColor="@color/white"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_top_albums"
+        android:icon="@drawable/ic_baseline_album_24"
+        android:title="@string/top_albums"
+        app:cnb_iconColor="@color/white"
+        app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/action_my_Accounts"

@@ -55,12 +55,12 @@ class MyTrackFragment : Fragment(){
 
     private fun hideEmptyData() {
         myTracksBinding?.ivEmptyData?.gone()
-        myTracksBinding?.rvMyTrack?.visible()
+        myTracksBinding?.rvMyTracks?.visible()
     }
 
     private fun showEmptyData(){
         myTracksBinding?.ivEmptyData?.visible()
-        myTracksBinding?.rvMyTrack?.gone()
+        myTracksBinding?.rvMyTracks?.gone()
     }
 
     override fun onCreateView(
@@ -100,17 +100,17 @@ class MyTrackFragment : Fragment(){
     }
 
     private fun swipeMyTracks() {
-        myTracksBinding?.swipeMyTrack?.setOnRefreshListener {
+        myTracksBinding?.swipeMyTracks?.setOnRefreshListener {
             showMyTracks()
         }
     }
 
     private fun showLoading() {
-        myTracksBinding?.swipeMyTrack?.visible()
+        myTracksBinding?.swipeMyTracks?.visible()
     }
 
     private fun hideLoading() {
-        myTracksBinding?.swipeMyTrack?.hide()
+        myTracksBinding?.swipeMyTracks?.hide()
     }
 
     private fun showMyTracks(){
@@ -124,6 +124,6 @@ class MyTrackFragment : Fragment(){
             .addValueEventListener(eventListenerMyTracks)
 
         //SetupRecyclerView
-        myTracksBinding?.rvMyTrack?.adapter = myTracksAdapter
+        myTracksBinding?.rvMyTracks?.adapter = myTracksAdapter
     }
 }

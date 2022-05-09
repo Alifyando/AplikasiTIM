@@ -17,10 +17,7 @@ import com.adl.aplikasitim.adapter.TopMusicAdapter
 import com.adl.aplikasitim.databinding.FragmentLibraryBinding
 import com.adl.aplikasitim.models.Music
 import com.adl.aplikasitim.repository.Repository
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.fragment_library.*
@@ -61,12 +58,14 @@ class LibraryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         topMusicAdapter = TopMusicAdapter()
+        databaseTopCharts= FirebaseDatabase.getInstance().getReference("top_charts")
 
         swipeTopMusic()
 
         onClik()
 
         showLoading()
+        showTopMusics()
 
         Handler(Looper.getMainLooper()).postDelayed({
           showTopMusics()
@@ -89,7 +88,6 @@ class LibraryFragment : Fragment() {
     }
 
     private fun showTopMusics(){
-        hideLoading()
         //GetData
         //val topMusics = Repository.getDataTopChartsFromAssets(context)
         //SetData
@@ -100,7 +98,6 @@ class LibraryFragment : Fragment() {
         libraryBinding?.rvMusic?.adapter = topMusicAdapter
     }
 
-    //TOMBOL SEARCH
     private fun onClik() {
         topMusicAdapter.onClick { musics, position ->
             context?.startActivity<PlayMusicActivity>(
@@ -113,6 +110,13 @@ class LibraryFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun searchView(){
+        _binding?.btnSearch?.setOnClickListener {
+
+
+        }
     }
 
 

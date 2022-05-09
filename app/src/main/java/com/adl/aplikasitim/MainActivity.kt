@@ -5,7 +5,9 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.adl.aplikasitim.databinding.ActivityMainBinding
 import com.adl.aplikasitim.views.LibraryFragment
+import com.adl.aplikasitim.views.MyTrackFragment
 import com.adl.aplikasitim.views.ProfileFragment
+import com.adl.aplikasitim.views.TopAlbumsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,6 +36,8 @@ class MainActivity : AppCompatActivity() {
             when (id) {
                 R.id.action_library -> openFragment(LibraryFragment())
                 R.id.action_my_Accounts -> openFragment(ProfileFragment())
+                R.id.action_my_tracks -> openFragment(MyTrackFragment())
+                R.id.action_top_albums-> openFragment(TopAlbumsFragment())
 
             }
         }

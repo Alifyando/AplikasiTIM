@@ -29,73 +29,53 @@
             android:layout_height="178dp"
             app:srcCompat="@drawable/logo4" />
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ti_email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="50dp"
-            android:layout_marginTop="20dp"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="5dp"
-            app:contentPadding="10dp">
+            android:layout_height="56dp"
+            app:hintEnabled="false"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp">
 
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtEmail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:background="@drawable/bg_edit_text"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:hint="@string/email"
+                android:textColor="@color/black"
+                android:textColorHint="#4D000000"
+                android:inputType="textEmailAddress"/>
 
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/ic_baseline_account_circle_24" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-                <EditText
-                    android:id="@+id/txtEmail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:gravity="start|top"
-                    android:inputType="textMultiLine"
-                    android:hint="@string/email"
-                    android:textColor="#040303"
-                    tools:ignore="TouchTargetSizeCheck" />
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ti_password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="50dp"
-            android:layout_marginTop="5dp"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="5dp"
-            app:contentPadding="10dp">
+            android:layout_height="56dp"
+            app:hintEnabled="false"
+            app:endIconMode="password_toggle"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/ti_email">
 
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtPassword"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:background="@drawable/bg_edit_text"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:hint="@string/password"
+                android:textColor="@color/black"
+                android:textColorHint="#4D000000"
+                android:inputType="textPassword"/>
 
-                <ImageView
-                    android:id="@+id/imageView7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/ic_baseline_lock_24" />
-
-                <EditText
-                    android:id="@+id/txtPassword"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/password"
-                    android:inputType="textPassword" />
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btnLogin"

@@ -50,7 +50,7 @@ object Repository {
 
         //Mengambil Data dari Firebase Storage
         FirebaseStorage
-            .getInstance("gs://aplikasitim-65663.appspot.com")
+            .getInstance("gs://aplikasitim-8bf3a.appspot.com")
             .reference
             .child("musics")
             .listAll()
@@ -91,7 +91,7 @@ object Repository {
         val databaseTopCharts = FirebaseDatabase.getInstance().getReference("top_Chart")
         //Mengambil Data dari Firebase Storage
         FirebaseStorage
-            .getInstance("gs://aplikasitim-65663.appspot.com")
+            .getInstance("gs://aplikasitim-8bf3a.appspot.com")
             .reference
             .child("images")
             .listAll()
@@ -178,7 +178,7 @@ object Repository {
     fun addDataToTopAlbumsImage(){
         val databaseTopAlbums = FirebaseDatabase.getInstance().getReference("top_albums")
         FirebaseStorage
-            .getInstance("gs://aplikasitim-65663.appspot.com")
+            .getInstance("gs://aplikasitim-8bf3a.appspot.com")
             .reference
             .child("images")
             .listAll()
