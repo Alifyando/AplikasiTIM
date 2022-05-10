@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,108 +10,137 @@
     app:contentPadding="10dp">
 
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_margin="10dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="3dp"
+        app:contentPadding="5dp">
 
-        <ImageView
-            android:id="@+id/imageView8"
-            android:layout_width="229dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="50dp"
-            app:srcCompat="@drawable/logobagus" />
-
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="wrap_content"
-            android:layout_height="178dp"
-            app:srcCompat="@drawable/logo4" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ti_email"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            app:hintEnabled="false"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtEmail"
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="229dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="30dp"
+                app:srcCompat="@drawable/logobagus" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="178dp"
+                app:srcCompat="@drawable/logo4" />
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/bg_edit_text"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:hint="@string/email"
-                android:textColor="@color/black"
-                android:textColorHint="#4D000000"
-                android:inputType="textEmailAddress"/>
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="5dp"
+                app:contentPadding="5dp">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ti_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_margin="5dp"
+                    app:hintEnabled="false">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ti_password"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            app:hintEnabled="false"
-            app:endIconMode="password_toggle"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/ti_email">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_edit_text"
+                        android:hint="@string/email"
+                        android:inputType="textEmailAddress"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="#4D000000" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtPassword"
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.cardview.widget.CardView>
+
+
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/bg_edit_text"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:hint="@string/password"
-                android:textColor="@color/black"
-                android:textColorHint="#4D000000"
-                android:inputType="textPassword"/>
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="5dp"
+                app:contentPadding="5dp">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ti_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_margin="5dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:endIconMode="password_toggle"
+                    app:hintEnabled="false"
+                    app:layout_constraintTop_toBottomOf="@id/ti_email">
 
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="50dp"
-            android:layout_marginTop="30dp"
-            android:backgroundTint="#8080B9"
-            android:fontFamily="@font/acme"
-            android:text="Login"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_edit_text"
+                        android:hint="@string/password"
+                        android:inputType="textPassword"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="#4D000000" />
 
-        <Button
-            android:id="@+id/btnRegister"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="50dp"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="#8080B9"
-            android:fontFamily="@font/acme"
-            android:text="Register"
-            android:textColor="@color/white"
-            android:textColorHint="@color/black"
-            android:textSize="20sp" />
-        <ProgressBar
-            android:id="@+id/pb_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="100dp"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="#8080B9"
+                android:fontFamily="@font/acme"
+                android:text="Login"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="100dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#8080B9"
+                android:fontFamily="@font/acme"
+                android:text="Register"
+                android:textColor="@color/white"
+                android:textColorHint="@color/black"
+                android:textSize="20sp" />
+
+            <ProgressBar
+                android:id="@+id/pb_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
-
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

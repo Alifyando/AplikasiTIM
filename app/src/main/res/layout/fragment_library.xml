@@ -25,7 +25,8 @@
                 app:cardBackgroundColor="#8080B9"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="3dp"
-                app:contentPadding="5dp">
+                app:contentPadding="5dp"
+                android:layout_margin="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -43,16 +44,24 @@
                             android:layout_height="90dp"
                             app:srcCompat="@drawable/logo2" />
 
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
                             <TextView
                                 android:id="@+id/textView10"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/acme"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="sans-serif"
                                 android:text="Hello, "
                                 android:textColor="#FFFFFF"
                                 android:textSize="18dp"
@@ -62,30 +71,24 @@
                                 android:id="@+id/textView11"
                                 android:layout_width="64dp"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/acme"
+                                android:fontFamily="sans-serif"
                                 android:text="Astri"
                                 android:textColor="#FFFFFF"
                                 android:textSize="18dp"
                                 android:textStyle="italic" />
+
                         </LinearLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/textView9"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:fontFamily="@font/acme"
+                            android:fontFamily="sans-serif"
                             android:shadowColor="#FFFFFF"
-                            android:text="Search music"
+                            android:text="Search your music"
                             android:textColor="#FFFFFF"
-                            android:textSize="20sp"
+                            android:textSize="18sp"
                             android:textStyle="italic" />
 
                         <androidx.cardview.widget.CardView
@@ -119,9 +122,13 @@
                             </LinearLayout>
 
                         </androidx.cardview.widget.CardView>
+
                     </LinearLayout>
+
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
+
         </LinearLayout>
 
         <LinearLayout
@@ -133,6 +140,7 @@
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginHorizontal="5dp"
                 android:layout_weight="4"
                 android:fillViewport="true">
 
@@ -142,9 +150,11 @@
                     android:layout_height="wrap_content"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/playlist" />
+
             </androidx.core.widget.NestedScrollView>
 
         </LinearLayout>
+
     </LinearLayout>
 
 

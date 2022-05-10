@@ -11,20 +11,20 @@
         android:id="@+id/action_my_tracks"
         android:icon="@drawable/ic_baseline_playlist_play_24"
         android:title="@string/my_tracks"
-        app:cnb_iconColor="@color/white"
+        app:cnb_iconColor="@color/purple_200"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_top_albums"
         android:icon="@drawable/ic_baseline_album_24"
         android:title="@string/top_albums"
-        app:cnb_iconColor="@color/white"
+        app:cnb_iconColor="@color/purple_200"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/action_my_Accounts"
         android:icon="@drawable/ic_baseline_manage_accounts_24"
         android:title="@string/profile"
-        app:cnb_iconColor="@color/white"
+        app:cnb_iconColor="@color/purple_200"
         app:showAsAction="ifRoom"/>
 
 </menu>

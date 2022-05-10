@@ -11,17 +11,19 @@
 
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_baseline_play_circle_80"/>
+        android:layout_marginHorizontal="50dp"
+        app:srcCompat="@drawable/logobagus" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Bear Music App"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:text="Bear Music App"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textStyle="bold" />-->
 
 </LinearLayout>

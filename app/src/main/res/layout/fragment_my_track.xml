@@ -21,21 +21,35 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/my_tracks"
-                    android:textColor="@color/white"
-                    android:textSize="32sp"
-                    android:textStyle="bold"
-                    android:layout_margin="16dp"/>
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="#8080B9"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="5dp"
+                    app:contentPadding="5dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:text="@string/my_tracks"
+                        android:textColor="#FFFFFF"
+                        android:textSize="32sp"
+                        android:textStyle="bold" />
+
+                </androidx.cardview.widget.CardView>
+
+
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_my_tracks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:listitem="@layout/playlist"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                    android:layout_marginHorizontal="5dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/playlist" />
 
             </LinearLayout>
 
