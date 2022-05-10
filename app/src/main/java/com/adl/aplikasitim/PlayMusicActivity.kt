@@ -1,24 +1,31 @@
 package com.adl.aplikasitim
 
+import android.content.Context
+import android.graphics.drawable.Drawable
 import android.media.AudioAttributes
+import android.media.AudioManager
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.widget.ImageView
 import android.widget.SeekBar
 import androidx.core.content.ContextCompat
 import com.adl.aplikasitim.Utils.toMusicTime
+import com.adl.aplikasitim.audiovolume.AudioVolumeObserver
+import com.adl.aplikasitim.audiovolume.OnAudioVolumeChangedListener
 import com.adl.aplikasitim.databinding.PlaymusicBinding
 import com.adl.aplikasitim.models.Music
+import com.adl.aplikasitim.pref.ProgressPrefs
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 
 
-class PlayMusicActivity : AppCompatActivity() {
+class PlayMusicActivity : DataBindingActivity(),OnAudioVolumeChangedListener {
 
     companion object{
         const val KEY_SONGS = "key_songs"
@@ -32,6 +39,18 @@ class PlayMusicActivity : AppCompatActivity() {
     private var currentUser: FirebaseUser? = null
     private lateinit var databaseMyTracks: DatabaseReference
     private var isMyTrack = false
+
+    private lateinit var seekBar: SeekBar
+    private lateinit var imgMusicNote: ImageView
+
+    private var audioManager: AudioManager? = null
+    private var sBarProgress = 0
+    private var audioVolumeObserver: AudioVolumeObserver? = null
+    private var musicNoteDrawable: Drawable? = null
+    private var musicOffDrawable: Drawable? = null
+    private val preferences = ProgressPrefs()
+
+
 
     private val eventListenerCheckMyTracks = object : ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot) {
@@ -100,15 +119,70 @@ class PlayMusicActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         playSongBinding = PlaymusicBinding.inflate(layoutInflater)
         setContentView(playSongBinding.root)
+        volumeControlStream = AudioManager.STREAM_MUSIC
+
+        setViews()
 
         init()
         getData()
         onClick()
     }
 
+    private fun setViews() {
+        seekBar = playSongBinding.seekBar
+        imgMusicNote = playSongBinding.imgMusicNote
+        setSeekBar()
+        setDrawables()
+        setViewListeners()
+    }
+
+    private fun setSeekBar() {
+        seekBar.secondaryProgress = 100
+        audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        seekBar.max = audioManager!!.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
+        val volume = audioManager!!.getStreamVolume(AudioManager.STREAM_MUSIC)
+        seekBar.progress = volume
+        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                sBarProgress = progress
+                handleIcon(progress)
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                audioManager?.setStreamVolume(AudioManager.STREAM_MUSIC, sBarProgress, AudioManager.FLAG_PLAY_SOUND)
+            }
+        })
+    }
+
+    private fun setViewListeners() {
+        imgMusicNote.setOnClickListener {
+            if (imgMusicNote.drawable == musicNoteDrawable) {
+                preferences.seekBarProgress = sBarProgress
+                seekBar.progress = 0
+                sBarProgress = 0
+                audioManager?.setStreamVolume(AudioManager.STREAM_MUSIC, sBarProgress, AudioManager.FLAG_PLAY_SOUND)
+                imgMusicNote.setImageDrawable(musicOffDrawable)
+            } else {
+                sBarProgress = preferences.seekBarProgress
+                audioManager?.setStreamVolume(AudioManager.STREAM_MUSIC, sBarProgress, AudioManager.FLAG_PLAY_SOUND)
+                seekBar.progress = sBarProgress
+                imgMusicNote.setImageDrawable(musicNoteDrawable)
+            }
+        }
+    }
+
+
+    private fun setDrawables() {
+        musicNoteDrawable = ContextCompat.getDrawable(this, R.drawable.baseline_music_note_white_24)
+        musicOffDrawable = ContextCompat.getDrawable(this, R.drawable.baseline_music_off_white_24)
+    }
+
     override fun onPause() {
         super.onPause()
         musicPlayer?.pause()
+        audioVolumeObserver?.unregister()
     }
 
     override fun onDestroy() {
@@ -122,6 +196,23 @@ class PlayMusicActivity : AppCompatActivity() {
         if (musicPlayer != null && !musicPlayer?.isPlaying!!){
             musicPlayer?.start()
         }
+        if (audioManager != null) {
+            val currentVol = audioManager!!.getStreamVolume(AudioManager.STREAM_MUSIC)
+            seekBar.progress = currentVol
+            handleIcon(currentVol)
+        }
+        if (audioVolumeObserver == null) {
+            audioVolumeObserver = AudioVolumeObserver(this)
+        }
+        audioVolumeObserver?.register(AudioManager.STREAM_MUSIC, this)
+    }
+
+    private fun handleIcon(currentVol: Int) {
+        if (currentVol == 0) {
+        imgMusicNote.setImageDrawable(musicOffDrawable)
+    } else {
+        imgMusicNote.setImageDrawable(musicNoteDrawable)
+    }
     }
 
     private fun getData() {
@@ -332,6 +423,11 @@ class PlayMusicActivity : AppCompatActivity() {
 
         currentUser = FirebaseAuth.getInstance().currentUser
         databaseMyTracks = FirebaseDatabase.getInstance().getReference("users")
+    }
+
+    override fun onAudioVolumeChanged(currentVolume: Int, maxVolume: Int) {
+        seekBar.progress = currentVolume
+        handleIcon(currentVolume)
     }
 }
 
