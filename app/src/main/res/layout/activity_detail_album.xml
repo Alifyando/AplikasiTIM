@@ -35,7 +35,7 @@
                         android:id="@+id/tb_detail_album"
                         android:layout_width="match_parent"
                         android:layout_height="?attr/actionBarSize"
-                        android:background="@android:color/transparent"
+                        android:background="#8080B9"
                         android:elevation="0dp"
                         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
@@ -45,12 +45,13 @@
                     android:id="@+id/iv_detail_album"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@android:color/darker_gray"
                     android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="16dp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:src="@android:color/darker_gray"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/app_bar_detail_album"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/app_bar_detail_album" />
 
                 <TextView
                     android:id="@+id/tv_name_album"

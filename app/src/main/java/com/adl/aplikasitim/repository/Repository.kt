@@ -176,7 +176,7 @@ object Repository {
     }
 
     fun addDataToTopAlbumsImage(){
-        val databaseTopAlbums = FirebaseDatabase.getInstance().getReference("top_albums")
+        val databaseTopAlbums = FirebaseDatabase.getInstance().getReference("top_Album")
         FirebaseStorage
             .getInstance("gs://aplikasitim-8bf3a.appspot.com")
             .reference

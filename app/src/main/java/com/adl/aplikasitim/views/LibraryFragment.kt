@@ -8,6 +8,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.SearchView
 import com.adl.aplikasitim.PlayMusicActivity
 import com.adl.aplikasitim.R
 import com.adl.aplikasitim.Utils.gone
@@ -28,6 +31,7 @@ class LibraryFragment : Fragment() {
     private val libraryBinding get() = _binding
     private lateinit var topMusicAdapter : TopMusicAdapter
     private lateinit var databaseTopCharts: DatabaseReference
+
 
     private val eventListenerTopCharts = object: ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot) {
@@ -53,12 +57,17 @@ class LibraryFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding= FragmentLibraryBinding.inflate(inflater,container, false)
         return _binding?.root
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         topMusicAdapter = TopMusicAdapter()
-        databaseTopCharts= FirebaseDatabase.getInstance().getReference("top_charts")
+      //initDB
+        databaseTopCharts= FirebaseDatabase.getInstance().getReference("top_Chart")
+
+
 
         swipeTopMusic()
 
@@ -112,12 +121,7 @@ class LibraryFragment : Fragment() {
         _binding = null
     }
 
-    private fun searchView(){
-        _binding?.btnSearch?.setOnClickListener {
 
-
-        }
-    }
 
 
 }

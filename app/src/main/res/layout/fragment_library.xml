@@ -102,23 +102,25 @@
                                 android:layout_height="match_parent"
                                 android:orientation="horizontal">
 
-                                <ImageButton
-                                    android:id="@+id/btnSearch"
-                                    android:layout_width="41dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_marginLeft="10dp"
-                                    android:background="#FFFFFF"
-                                    app:srcCompat="@drawable/ic_baseline_search_24"
-                                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
-
                                 <EditText
-                                    android:id="@+id/editTextTextMultiLine"
-                                    android:layout_width="wrap_content"
+                                    android:id="@+id/searchText"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_centerHorizontal="true"
                                     android:ems="10"
-                                    android:gravity="start|top"
-                                    android:inputType="textMultiLine"
-                                    tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                                    android:hint="Enter Name"
+                                    android:inputType="textPersonName"
+                                    android:minHeight="48dp" />
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/list_view"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_below="@+id/searchText"
+                                    android:layout_marginTop="14dp" />
+
                             </LinearLayout>
 
                         </androidx.cardview.widget.CardView>

@@ -61,7 +61,7 @@ class TopAlbumsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //Init
         topAlbumsAdapter = TopAlbumsAdapter()
-        databaseTopAlbums = FirebaseDatabase.getInstance().getReference("top_albums")
+        databaseTopAlbums = FirebaseDatabase.getInstance().getReference("top_Album")
 
         swipeTopAlbums()
         onClick()
