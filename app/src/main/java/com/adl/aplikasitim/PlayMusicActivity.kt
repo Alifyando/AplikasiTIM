@@ -167,7 +167,7 @@ class PlayMusicActivity : DataBindingActivity(), OnAudioVolumeChangedListener {
                 imgMusicNote.setImageDrawable(musicOffDrawable)
             } else {
              //   sBarProgress = preferences.seekBarProgress
-                 sBarProgress = 10
+                 sBarProgress = 2
                 audioManager?.setStreamVolume(AudioManager.STREAM_MUSIC, sBarProgress, AudioManager.FLAG_PLAY_SOUND)
                 seekBar.progress = sBarProgress
                 imgMusicNote.setImageDrawable(musicNoteDrawable)

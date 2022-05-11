@@ -84,8 +84,7 @@ class LibraryFragment : Fragment() {
         searchAdapter=SearchAdapter(lstSearch)
 
 
-        loadUserInfo()
-        auth = FirebaseAuth.getInstance()
+
         swipeTopMusic()
         onClik()
         showLoading()
@@ -201,6 +200,8 @@ class LibraryFragment : Fragment() {
        }
     }
 
-
-
+    override fun onResume() {
+        super.onResume()
+        loadUserInfo()
+    }
 }

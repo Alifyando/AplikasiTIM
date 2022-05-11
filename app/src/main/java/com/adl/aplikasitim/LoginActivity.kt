@@ -8,7 +8,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.adl.aplikasitim.databinding.LoginActivityBinding
 import com.adl.aplikasitim.views.LibraryFragment
+import com.google.android.gms.auth.api.Auth
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
+import com.google.rpc.context.AttributeContext
 import io.grpc.ManagedChannelProvider.NewChannelBuilderResult.error
 import io.grpc.ServerProvider.NewServerBuilderResult.error
 import kotlinx.android.synthetic.main.login_activity.*
@@ -26,19 +29,19 @@ class LoginActivity : AppCompatActivity() {
         setContentView(loginBinding.root)
 
         auth = FirebaseAuth.getInstance()
-        checkIfAlreadyLogin()
+//        checkIfAlreadyLogin()
         onClick()
 
     }
 
-    private fun checkIfAlreadyLogin() {
-        val currentUser = auth.currentUser
-        if(currentUser !=null){
-            startActivity<MainActivity>()
-            finish()
-
-        }
-    }
+//    private fun checkIfAlreadyLogin() {
+//        val currentUser = auth.currentUser
+//        if(currentUser !=null){
+//            startActivity<LoginActivity>()
+//            finish()
+//
+//        }
+//    }
 
     private fun onClick() {
         loginBinding.btnRegister.setOnClickListener{
@@ -73,8 +76,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun loginToServer(email: String, pass: String) {
+        val firebaseUser = auth.currentUser
         auth.signInWithEmailAndPassword(email, pass)
             .addOnSuccessListener {
+                val ref = FirebaseDatabase.getInstance().getReference("users")
+                ref.child(firebaseUser!!.uid)
                 val intent = Intent(this,MainActivity::class.java)
                 startActivity(intent)
                 finish()

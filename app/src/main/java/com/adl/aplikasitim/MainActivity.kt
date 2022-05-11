@@ -1,7 +1,9 @@
 package com.adl.aplikasitim
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import com.adl.aplikasitim.databinding.ActivityMainBinding
 import com.adl.aplikasitim.views.LibraryFragment
@@ -17,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainBinding.root)
+
 
         init()
 
@@ -40,6 +43,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.action_top_albums-> openFragment(TopAlbumsFragment())
 
             }
+
         }
         openHomeFragment()
     }
