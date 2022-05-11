@@ -38,24 +38,24 @@
             </androidx.cardview.widget.CardView>
 
 
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="#DEF4F6"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="5dp"
+                app:contentPadding="5dp">
 
-           <androidx.cardview.widget.CardView
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               android:layout_margin="10dp"
-               app:cardCornerRadius="15dp"
-               app:cardElevation="5dp"
-               app:contentPadding="5dp">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_top_albums"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="2"
+                    tools:listitem="@layout/item_album" />
 
-               <androidx.recyclerview.widget.RecyclerView
-                   android:id="@+id/rv_top_albums"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   tools:listitem="@layout/item_album"
-                   app:spanCount="2"
-                   app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>
-
-           </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
