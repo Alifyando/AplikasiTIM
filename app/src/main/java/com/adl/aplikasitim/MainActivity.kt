@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
+        openHomeFragment()
     }
 
     private fun openHomeFragment() {

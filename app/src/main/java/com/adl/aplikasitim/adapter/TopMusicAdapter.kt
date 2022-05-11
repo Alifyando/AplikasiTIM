@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.adl.aplikasitim.databinding.PlaylistBinding
 import com.adl.aplikasitim.models.Music
+import com.bumptech.glide.Glide
 
 
 class TopMusicAdapter: RecyclerView.Adapter<TopMusicAdapter.ViewHolder>() {
@@ -14,6 +15,7 @@ class TopMusicAdapter: RecyclerView.Adapter<TopMusicAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: PlaylistBinding): RecyclerView.ViewHolder(binding.root) {
         fun bindItem(music: Music,listener: ((MutableList<Music>, Int) -> Unit)?){
+            Glide.with(itemView).load(music.imageSong).placeholder(android.R.color.darker_gray).into(binding.imageView2)
             binding.txtIndexMusic.text = (adapterPosition + 1).toString() //Menambahkan berdasarkan posisi
             binding.txtArtis.text = music.artistSong
             binding.txtJudul.text=music.nameSong

@@ -11,16 +11,22 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.SearchView
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.adl.aplikasitim.PlayMusicActivity
 import com.adl.aplikasitim.R
 import com.adl.aplikasitim.Utils.gone
 import com.adl.aplikasitim.Utils.hide
 import com.adl.aplikasitim.Utils.visible
+import com.adl.aplikasitim.adapter.SearchAdapter
 import com.adl.aplikasitim.adapter.TopMusicAdapter
 import com.adl.aplikasitim.databinding.FragmentLibraryBinding
 import com.adl.aplikasitim.models.Music
+import com.adl.aplikasitim.models.MusicX
 import com.adl.aplikasitim.repository.Repository
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
+import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.fragment_library.*
@@ -32,6 +38,12 @@ class LibraryFragment : Fragment() {
     private lateinit var topMusicAdapter : TopMusicAdapter
     private lateinit var databaseTopCharts: DatabaseReference
 
+    lateinit var searchAdapter: SearchAdapter
+    lateinit var lstMusicX : ArrayList<MusicX>
+    lateinit var lstSearch:ArrayList<MusicX>
+    lateinit var searchString:String
+
+    private lateinit var auth: FirebaseAuth
 
     private val eventListenerTopCharts = object: ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot) {
@@ -67,18 +79,62 @@ class LibraryFragment : Fragment() {
       //initDB
         databaseTopCharts= FirebaseDatabase.getInstance().getReference("top_Chart")
 
+       lstMusicX=ArrayList<MusicX>()
+        lstSearch= ArrayList<MusicX>()
+        searchAdapter=SearchAdapter(lstSearch)
 
 
+        loadUserInfo()
+        auth = FirebaseAuth.getInstance()
         swipeTopMusic()
-
         onClik()
-
         showLoading()
         showTopMusics()
 
         Handler(Looper.getMainLooper()).postDelayed({
           showTopMusics()
         },2000)
+
+
+        ///btn search
+        btnSearch.setOnClickListener({
+            searchString = searchText.text.toString()
+            databaseTopCharts.get().addOnCompleteListener{ task ->
+                if (task.isSuccessful) {
+                    val snapshot = task.result
+                    lstMusicX.clear()
+                    for (data in snapshot.children){
+                        val albumname= data.child("album_name_song").getValue(String::class.java)
+                        val artis = data.child("artist_song").getValue(String::class.java)
+                        val keysong = data.child("key_song").getValue(String::class.java)
+                        val namesong = data.child("name_song").getValue(String::class.java)
+                        val urisong = data.child("uri_song").getValue(String::class.java)
+                        val yearsong = data.child("year_song").getValue(Int::class.java)
+                        val imagesong = data.child("image_song").getValue(String::class.java)
+                        lstMusicX.add( MusicX(albumname.toString(),namesong.toString(),yearsong.toString(),artis.toString(), urisong.toString(),imagesong.toString(),keysong.toString()))
+                        // Log.d("TAG", "nama: ${namaresep}\nimagelink: ${imagelink}")
+                    }
+                    //resepAdapter.notifyDataSetChanged()
+                    Search(lstMusicX)
+                } else {
+                    Log.d("TAG", task.exception!!.message!!) //Don't ignore potential errors!
+                }
+            }
+
+        })
+    }
+//menamppilkan userinfo
+    private fun loadUserInfo() {
+            val user =Firebase.auth.currentUser
+            val uid = Firebase.auth.uid!!
+            val ref = FirebaseDatabase.getInstance().getReference("users")
+            ref.child(uid).get().addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val snapshot = task.result
+                    val name = "${snapshot.child("full_name").value}"
+                    txtUsername.setText(name)
+                }
+            }
     }
 
     private fun swipeTopMusic(){
@@ -104,7 +160,10 @@ class LibraryFragment : Fragment() {
 
         databaseTopCharts.addValueEventListener(eventListenerTopCharts)
         //SetUpRecycleView
+
         libraryBinding?.rvMusic?.adapter = topMusicAdapter
+
+
     }
 
     private fun onClik() {
@@ -114,13 +173,33 @@ class LibraryFragment : Fragment() {
                 PlayMusicActivity.KEY_POSITION to position
             )
         }
+
+
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+    fun Search(list:ArrayList<MusicX>){
 
+        val pattern = searchString.toRegex((RegexOption.IGNORE_CASE))
+        lstSearch.clear()
+        for(data in list){
+            if (pattern.containsMatchIn(data.nameSong)) {
+                println("${data.nameSong} matches")
+                val resep:String=data.nameSong.toString()
+                //Toast.makeText(activity,"${dataresep.title} matches",Toast.LENGTH_LONG).show()
+              lstSearch.add( MusicX(data.albumNameSong,data.nameSong,data.yearSong,data.artisSong,data.uriSong,data.imageSong,data.keySong))
+            }
+        }
+       //searchAdapter.notifyDataSetChanged()
+
+        rvMusic.apply {
+          layoutManager= LinearLayoutManager(activity)
+         adapter=searchAdapter
+       }
+    }
 
 
 

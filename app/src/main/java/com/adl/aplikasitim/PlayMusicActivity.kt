@@ -17,6 +17,7 @@ import com.adl.aplikasitim.audiovolume.AudioVolumeObserver
 import com.adl.aplikasitim.audiovolume.OnAudioVolumeChangedListener
 import com.adl.aplikasitim.databinding.PlaymusicBinding
 import com.adl.aplikasitim.models.Music
+import com.adl.aplikasitim.models.MusicX
 import com.adl.aplikasitim.pref.ProgressPrefs
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
@@ -49,6 +50,8 @@ class PlayMusicActivity : DataBindingActivity(), OnAudioVolumeChangedListener {
     private var musicNoteDrawable: Drawable? = null
     private var musicOffDrawable: Drawable? = null
     private val preferences = ProgressPrefs()
+
+
 
 
     private val eventListenerCheckMyTracks = object : ValueEventListener {
@@ -125,6 +128,7 @@ class PlayMusicActivity : DataBindingActivity(), OnAudioVolumeChangedListener {
         init()
         getData()
         onClick()
+        getDatasearch()
     }
     private fun setViews() {
         seekBar = playSongBinding.seekBar
@@ -156,13 +160,14 @@ class PlayMusicActivity : DataBindingActivity(), OnAudioVolumeChangedListener {
     private fun setViewListeners() {
         imgMusicNote.setOnClickListener {
             if (imgMusicNote.drawable == musicNoteDrawable) {
-                preferences.seekBarProgress = sBarProgress
+              //  preferences.seekBarProgress = sBarProgress
                 seekBar.progress = 0
                 sBarProgress = 0
                 audioManager?.setStreamVolume(AudioManager.STREAM_MUSIC, sBarProgress, AudioManager.FLAG_PLAY_SOUND)
                 imgMusicNote.setImageDrawable(musicOffDrawable)
             } else {
-                sBarProgress = preferences.seekBarProgress
+             //   sBarProgress = preferences.seekBarProgress
+                 sBarProgress = 10
                 audioManager?.setStreamVolume(AudioManager.STREAM_MUSIC, sBarProgress, AudioManager.FLAG_PLAY_SOUND)
                 seekBar.progress = sBarProgress
                 imgMusicNote.setImageDrawable(musicNoteDrawable)
@@ -226,6 +231,74 @@ class PlayMusicActivity : DataBindingActivity(), OnAudioVolumeChangedListener {
 
         //Get data My Tracks
         checkMyTrack()
+    }
+    private fun getDatasearch(){
+        if (intent.hasExtra("data")){
+            var musik = intent.getParcelableExtra<MusicX>("data")!!
+            checkButtonSong()
+            playSongBinding.tvNameSong.text = musik.nameSong
+            playSongBinding.tvArtistName.text = musik.artisSong
+            Glide.with(this)
+                .load(musik.imageSong)
+                .placeholder(android.R.color.darker_gray)
+                .into(playSongBinding.imagePlaySong)
+            try {
+                musicPlayer?.setDataSource(musik.uriSong)
+                musicPlayer?.setOnPreparedListener{
+                    it.start()
+                    playSongBinding.mntEnd.text = it?.duration?.toMusicTime()
+                    playSongBinding.progressBar4.max = it?.duration!!
+                    checkMusicButton()
+                }
+
+                musicPlayer?.prepareAsync()
+
+                handler.postDelayed(object : Runnable {
+                    override fun run() {
+                        try {
+                            playSongBinding.progressBar4.progress = musicPlayer?.currentPosition!!
+                            handler.postDelayed(this, 1000)
+                        } catch (e: Exception) {
+                            Log.e("PlaySongActivity", "[run] ${e.message}")
+                        }
+                    }
+                }, 0)
+
+                playSongBinding.progressBar4.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+                    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                        if (musicPlayer != null){
+                            val currentTime = progress.toMusicTime()
+                            val maxDuration = musicPlayer?.duration
+
+                            playSongBinding.mntStart.text = currentTime
+
+                            if (progress == maxDuration){
+                                playNextSong()
+                            }
+
+                            if (!musicPlayer?.isPlaying!!){
+                                playSongBinding.mntStart.text = musicPlayer?.currentPosition?.toMusicTime()
+                            }
+
+                            if (fromUser){
+                                musicPlayer?.seekTo(progress)
+                                seekBar?.progress = progress
+                            }
+                        }
+                    }
+
+                    override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                    }
+
+                    override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                    }
+
+                })
+            }catch (e: IllegalStateException){
+                Log.e("PlaySongActivity", "[playSong] ${e.message}")
+            }
+
+            }
     }
 
     private fun checkMyTrack() {

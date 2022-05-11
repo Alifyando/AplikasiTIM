@@ -12,9 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:name=".VolumeActivity"
-            android:exported="false" />
-        <activity
             android:name=".DetailAlbumActivity"
             android:exported="false" />
         <activity

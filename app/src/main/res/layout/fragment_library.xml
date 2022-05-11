@@ -19,141 +19,147 @@
             android:layout_weight="4"
             android:orientation="horizontal">
 
-            <androidx.cardview.widget.CardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:cardBackgroundColor="#8080B9"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="3dp"
-                app:contentPadding="5dp"
-                android:layout_margin="10dp">
+                android:orientation="vertical">
 
-                <LinearLayout
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="108dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:id="@+id/imageView12"
-                            android:layout_width="108dp"
-                            android:layout_height="90dp"
-                            app:srcCompat="@drawable/logo2" />
-
-                    </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="#8080B9"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="3dp"
+                    app:contentPadding="5dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="108dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/imageView12"
+                                android:layout_width="108dp"
+                                android:layout_height="90dp"
+                                app:srcCompat="@drawable/logo2" />
+
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/textView10"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:fontFamily="sans-serif"
+                                    android:text="Hello, "
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="18dp"
+                                    android:textStyle="italic" />
+
+                                <TextView
+                                    android:id="@+id/txtUsername"
+                                    android:layout_width="64dp"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="sans-serif"
+                                    android:text="Astri"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="18dp"
+                                    android:textStyle="italic" />
+
+                            </LinearLayout>
 
                             <TextView
-                                android:id="@+id/textView10"
+                                android:id="@+id/textView9"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
                                 android:fontFamily="sans-serif"
-                                android:text="Hello, "
+                                android:shadowColor="#FFFFFF"
+                                android:text="Search your music"
                                 android:textColor="#FFFFFF"
-                                android:textSize="18dp"
+                                android:textSize="18sp"
                                 android:textStyle="italic" />
 
-                            <TextView
-                                android:id="@+id/textView11"
-                                android:layout_width="64dp"
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif"
-                                android:text="Astri"
-                                android:textColor="#FFFFFF"
-                                android:textSize="18dp"
-                                android:textStyle="italic" />
+                                android:layout_marginHorizontal="10dp"
+                                app:cardCornerRadius="15dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <EditText
+                                        android:id="@+id/searchText"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_centerHorizontal="true"
+                                        android:layout_weight="1"
+                                        android:ems="10"
+                                        android:hint="Enter Name"
+                                        android:inputType="textPersonName"
+                                        android:minHeight="48dp" />
+
+                                    <ImageView
+                                        android:id="@+id/btnSearch"
+                                        android:layout_width="79dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:src="@android:drawable/ic_menu_search" />
+
+                                </LinearLayout>
+
+                            </androidx.cardview.widget.CardView>
 
                         </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/textView9"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:fontFamily="sans-serif"
-                            android:shadowColor="#FFFFFF"
-                            android:text="Search your music"
-                            android:textColor="#FFFFFF"
-                            android:textSize="18sp"
-                            android:textStyle="italic" />
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="10dp"
-                            app:cardCornerRadius="15dp">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="horizontal">
-
-                                <EditText
-                                    android:id="@+id/searchText"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentTop="true"
-                                    android:layout_centerHorizontal="true"
-                                    android:ems="10"
-                                    android:hint="Enter Name"
-                                    android:inputType="textPersonName"
-                                    android:minHeight="48dp" />
-
-                                <androidx.recyclerview.widget.RecyclerView
-                                    android:id="@+id/list_view"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_alignParentStart="true"
-                                    android:layout_below="@+id/searchText"
-                                    android:layout_marginTop="14dp" />
-
-                            </LinearLayout>
-
-                        </androidx.cardview.widget.CardView>
-
                     </LinearLayout>
 
-                </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <androidx.core.widget.NestedScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="5dp"
-                android:layout_weight="4"
-                android:fillViewport="true">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvMusic"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/playlist" />
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
 
-            </androidx.core.widget.NestedScrollView>
+                    <androidx.core.widget.NestedScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_weight="4"
+                        android:fillViewport="true">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvMusic"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/playlist" />
+
+                    </androidx.core.widget.NestedScrollView>
+
+                </LinearLayout>
+            </LinearLayout>
 
         </LinearLayout>
 

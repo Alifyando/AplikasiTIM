@@ -44,3 +44,14 @@ data class Music(
 	@set:PropertyName("key_song")
 	var keySong: String? = null
 ) : Parcelable
+
+@Parcelize
+data class MusicX(
+	var albumNameSong: String,
+	var nameSong: String,
+	var yearSong: String,
+	var artisSong: String,
+	var uriSong: String,
+	var imageSong: String,
+	var keySong: String
+):Parcelable

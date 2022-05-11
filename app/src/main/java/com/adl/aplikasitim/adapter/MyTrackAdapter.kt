@@ -16,6 +16,7 @@ class MyTrackAdapter :RecyclerView.Adapter<MyTrackAdapter.ViewHolder>() {
 
    inner class ViewHolder (private val binding : PlaylistBinding) : RecyclerView.ViewHolder(binding.root){
         fun bindItem(music :Music, listener: ((MutableList<Music>,Int) -> Unit)?){
+            Glide.with(itemView).load(music.imageSong).placeholder(android.R.color.darker_gray).into(binding.imageView2)
             binding.txtIndexMusic.text = (adapterPosition + 1).toString()
             binding.txtArtis.text = music.artistSong
             binding.txtJudul.text = music.nameSong
